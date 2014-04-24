@@ -4,6 +4,15 @@ ChessCamp::Application.routes.draw do
   resources :instructors
   resources :camps
 
+  # New routes added:
+  resources :camp_instructors
+  resources :families
+  resources :locations
+  resources :registrations
+  resources :students
+  resources :users
+
+
   # semi-static routes
   get 'home', to: 'home#index', as: :home
   get 'home/about', to: 'home#about', as: :about
