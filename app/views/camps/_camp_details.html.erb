@@ -9,9 +9,9 @@
   <%= @camp.max_students %><br /><br />
 
 <strong>Dates:&nbsp;&nbsp;</strong> 
-  <%= @camp.start_date.strftime('%m/%d/%y') %> 
+  <%= @camp.start_date.strftime("%b %d, %Y") %> 
   <% if @camp.start_date != @camp.end_date %>
-    <%= "- #{@camp.end_date.strftime('%m/%d/%y')}" %>
+    <%= "- #{@camp.end_date.strftime('%b %d, %Y')}" %>
   <% end %>
   <br /><br />
 
