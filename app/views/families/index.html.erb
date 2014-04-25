@@ -1,35 +1,17 @@
-<h1>Listing families</h1>
+<div class="row">
+  <div class="small-7 columns">
+    <!-- MAIN CONTENT GOES HERE -->
+    <%= render :partial => "active_families" %>
+    <br />
+    <%= link_to "Add a new family", new_family_path, class: "button tiny radius" %>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Family name</th>
-      <th>Parent first name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Active</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <div class="small-1 columns">
+    &nbsp;
+  </div>
 
-  <tbody>
-    <% @families.each do |family| %>
-      <tr>
-        <td><%= family.family_name %></td>
-        <td><%= family.parent_first_name %></td>
-        <td><%= family.email %></td>
-        <td><%= family.phone %></td>
-        <td><%= family.active %></td>
-        <td><%= link_to 'Show', family %></td>
-        <td><%= link_to 'Edit', edit_family_path(family) %></td>
-        <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Family', new_family_path %>
+  <div class="small-4 columns">
+    <!-- SIDEBAR CONTENT GOES HERE -->
+    <%= render partial: 'inactive_families' %>
+  </div>
+</div>

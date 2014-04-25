@@ -3,6 +3,8 @@ class FamiliesController < ApplicationController
 
   def index
     @families = Family.all
+    @active_families = Family.active.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @inactive_families = Family.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   def show

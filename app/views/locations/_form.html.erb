@@ -15,6 +15,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+      <%= f.submit nil, class: 'button radius' %>
+      <%= link_to 'Back to list of locations', locations_path, :class => 'button secondary radius' %>
+    </div>
 <% end %>
