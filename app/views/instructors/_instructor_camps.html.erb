@@ -4,7 +4,7 @@
     <h5>Upcoming Camps</h5>
     <ul class="side-nav">
       <% @upcoming_camps.each do |camp| %>
-        <li><%= link_to camp.name, camp_path(camp) %> (<%= camp.start_date.strftime('%m/%d/%y') %>)</li>
+        <li><%= link_to camp.name, camp_path(camp) %> (<%= camp.start_date.strftime("%b %d, %Y") %>)</li>
       <% end %>
     </ul>
   </div>
@@ -15,7 +15,7 @@
     <h5>Past Camps</h5>
     <ul class="side-nav">
       <% @past_camps.each do |camp| %>
-        <li><%= link_to camp.name, camp_path(camp) %> (<%= camp.start_date.strftime('%m/%d/%y') %>)</li>
+        <li><%= link_to camp.name, camp_path(camp) %> (<%= camp.start_date.strftime("%b %d, %Y") %>)</li>
       <% end %>
     </ul>
   </div>
