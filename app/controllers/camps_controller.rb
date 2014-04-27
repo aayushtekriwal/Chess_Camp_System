@@ -28,6 +28,10 @@ class CampsController < ApplicationController
   end
 
   def update
+
+    @camp.start_date = convert_to_datetime(params[:camp][:start_date])
+    @camp.end_date = convert_to_datetime(params[:camp][:end_date])
+
     if @camp.update(camp_params)
       redirect_to @camp, notice: "The camp #{@camp.name} (on #{@camp.start_date.strftime('%m/%d/%y')}) was revised in the system."
     else
@@ -41,11 +45,21 @@ class CampsController < ApplicationController
   end
 
   private
+    def convert_start_date
+      params[:camp][:start_date] = convert_to_date(params[:camp][:start_date]) unless params[:camp][:start_date].blank?
+    end
+
+    def convert_end_date
+      params[:camp][:end_date] = convert_to_date(params[:camp][:end_date]) unless params[:camp][:end_date].blank?
+    end
+
     def set_camp
       @camp = Camp.find(params[:id])
     end
 
     def camp_params
-      params.require(:camp).permit(:curriculum_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :instructor_ids => [])
+      convert_start_date
+      convert_end_date
+      params.require(:camp).permit(:curriculum_id, :location_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :instructor_ids => [])
     end
 end

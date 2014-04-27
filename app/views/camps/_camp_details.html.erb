@@ -8,6 +8,9 @@
 <strong>Max Students:&nbsp;&nbsp;</strong> 
   <%= @camp.max_students %><br /><br />
 
+<strong>Current Occupancy:&nbsp;&nbsp;</strong> 
+  <%= @camp.registrations.count%> / <%= @camp.max_students %><br /><br />
+
 <strong>Dates:&nbsp;&nbsp;</strong> 
   <%= @camp.start_date.strftime("%b %d, %Y") %> 
   <% if @camp.start_date != @camp.end_date %>
@@ -17,6 +20,9 @@
 
 <strong>Time:&nbsp;&nbsp;</strong> 
   <%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %><br /><br />
+
+<strong>Location:&nbsp;&nbsp;</strong> 
+  <%= link_to @camp.location.name, location_path(@camp.location) %><br /><br />
 
 <strong>Active?&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />

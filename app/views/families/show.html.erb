@@ -12,7 +12,7 @@
 
 <p>
   <strong>Email:</strong>
-  <%= @family.email %>
+  <%= mail_to @family.email, @family.email, encode: "javascript" %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>Active:</strong>
-  <%= @family.active %>
+  <%= @family.active ? "Yes" : "No" %>
 </p>
 
 <%= link_to 'Edit', edit_family_path(@family) %> |

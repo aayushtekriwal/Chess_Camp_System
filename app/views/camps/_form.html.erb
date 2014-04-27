@@ -4,10 +4,11 @@
       <div class="small-6 columns">
         <h3><%= controller.action_name.capitalize %> Camp</h3>
         <%= f.input :curriculum_id, collection: Curriculum.active.alphabetical, prompt: "Select curriculum..." %>
+        <%= f.input :location_id, collection: Location.active.alphabetical, prompt: "Select location..." %>
         <%= f.input :cost %>
         <%= f.input :max_students %>
-        <%= f.input :start_date, as: :date, order: [:month, :day, :year], include_blank: true, start_year: Date.today.year - 1, end_year: Date.today.year + 1 %>
-        <%= f.input :end_date, as: :date, order: [:month, :day, :year], include_blank: true, start_year: Date.today.year - 1, end_year: Date.today.year + 1 %>
+        <%= f.input :start_date, label: "start_date", as: :string, input_html: {:class => "avg datepicker"} %>        
+        <%= f.input :end_date, label: "end_date", as: :string, input_html: {:class => "avg datepicker"} %>        
         <%= f.input :time_slot, collection: [['Morning','am'],['Afternoon','pm']], prompt: "Select time..." %>
         <%= f.input :active %>
       </div>

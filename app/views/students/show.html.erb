@@ -27,7 +27,7 @@
 
 <p>
   <strong>Active:</strong>
-  <%= @student.active %>
+  <%= @student.active ? "Yes" : "No" %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |

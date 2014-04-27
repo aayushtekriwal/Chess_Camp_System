@@ -53,6 +53,14 @@ gem 'carrierwave'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.1.5'
 
+gem 'nested_form','0.3.2'
+
+gem 'jquery-ui-rails', '4.1.1' # For datepicker
+
+gem 'chronic', '0.10.2'
+
+
+
 # Additional gems that are very useful in Rails development
 group :development do
   gem 'quiet_assets'
