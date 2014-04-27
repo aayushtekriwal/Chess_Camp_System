@@ -59,6 +59,8 @@ gem 'jquery-ui-rails', '4.1.1' # For datepicker
 
 gem 'chronic', '0.10.2'
 
+gem 'cancancan', '1.7.0'
+
 
 
 # Additional gems that are very useful in Rails development
