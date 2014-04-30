@@ -24,7 +24,7 @@
 <strong>Max Students :&nbsp;&nbsp;</strong> 
   <%= @camp.max_students %><br /><br />
 
-<strong>Registrations :&nbsp;</strong><%=@camp.registrations.count%><br /><br />
+<strong>Registrations &nbsp;</strong>(<%=@camp.registrations.count%>)<br /><br />
 
 <strong>List of Students in Camp :&nbsp;&nbsp;</strong> <br><br>
   <ol><%= render :partial => "display_students" %></ol>
@@ -32,6 +32,6 @@
 <strong>Active ?&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />
 
-
-<%= link_to "Edit this camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Destroy camp', camp_path(@camp), data: { confirm: 'Are you sure you want to permanently remove this camp from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<%= link_to "Display All Camps", camps_path, class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to "Edit Camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to 'Delete Camp', camp_path(@camp), data: { confirm: 'Are you sure you want to permanently remove this camp from the system?' }, method: :delete, class: "button tiny radius alert" %>

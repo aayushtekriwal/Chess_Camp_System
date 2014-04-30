@@ -28,12 +28,12 @@ class Location < ActiveRecord::Base
     map = "http://maps.google.com/maps/api/staticmap?center= #{latitude},#{longitude}&zoom=#{zoom}&size=#{width}x#{height}&maptype=roadmap#{markers}&sensor=false"
   end
 
-  # Private Methods
-  private
   def verify_that_never_used_for_camps
     self.camps.empty?
   end
 
+  # Private Methods
+  private
   def get_location_coordinates
     str = self.street_1
     zip = self.zip

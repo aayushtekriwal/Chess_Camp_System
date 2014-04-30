@@ -2,41 +2,30 @@
 <h3>Student Details</h3><br />
 
 <p>
-  <strong>Name:</strong>
+  <strong>Name :</strong>
   <%= @student.proper_name %>
 </p>
 
 <p>
-  <strong>First name:</strong>
-  <%= @student.first_name %>
-</p>
+  <strong>Family :</strong>
+  <%= link_to @student.family.family_name, family_path(@student.family) %><br /></p>
 
 <p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
-
-<p>
-  <strong>Family:</strong>
-  <%= @student.family_id %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
+  <strong>Date of birth :</strong>
   <%= @student.date_of_birth.strftime("%d/%m/%Y") %>
 </p>
 
 <p>
-  <strong>Age:</strong>
+  <strong>Age :</strong>
   <%= @student.age %>
 </p>
 
 <p>
-  <strong>Rating:</strong>
+  <strong>Rating :</strong>
   <%= @student.rating == 0 ? "Unrated" : @student.rating %>
 </p>
 
-<strong>List of Camps:&nbsp;&nbsp;</strong> <br><br>
+<strong>List of Camps :&nbsp;&nbsp;</strong> <br><br>
   <%= render :partial => "display_students_camps" %><br />
 
 <p>
@@ -44,5 +33,5 @@
   <%= @student.active ? "Yes" : "No" %>
 </p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<%= link_to "Display All Students", students_path, class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to "Edit Student", edit_student_path(@student), class: "button tiny radius" %>&nbsp;&nbsp;

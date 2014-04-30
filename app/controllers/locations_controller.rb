@@ -45,7 +45,8 @@ class LocationsController < ApplicationController
   end
 
   def destroy
-    if @location.location_delete_check == false
+    status = @location.verify_that_never_used_for_camps
+    if !status
       redirect_to :back, notice: "#{@location.name} is currently being used by a camp"
     else
       @location.destroy
