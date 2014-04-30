@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
+<h3>Location Details</h3><br />
 
 <p>
   <strong>Name:</strong>
   <%= @location.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @location.street_1 %>, <%= @location.street_2 %> <br>
+  <%= @location.city %>, <%= @location.state %> <%= @location.zip %>
 </p>
 
 <p>
@@ -31,7 +38,7 @@
 </p>
 
 <p>
-  <strong>Max capacity:</strong>
+  <strong>Maximum Capacity:</strong>
   <%= @location.max_capacity %>
 </p>
 
@@ -39,7 +46,8 @@
   <strong>Active:</strong>
   <%= @location.active ? "Yes" : "No" %>
 </p>
-
+ 
+<strong>Map:</strong>
 <%= image_tag @location.create_map_link %>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |

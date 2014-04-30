@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, message: "does not match"
   validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
 
+  # Scopes
+  scope :alphabetical, -> { order('username') }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
+
   # for use in authorizing with CanCan
   ROLES = [['Administrator', :admin],['Instructor', :instructor]]
 
@@ -23,8 +28,8 @@ class User < ActiveRecord::Base
     role.downcase.to_sym == authorized_role
   end
 
-  def self.authenticate(email,password)
-    find_by_email(email).try(:authenticate, password)
+  def self.authenticate(username,password)
+    find_by_username(username).try(:authenticate, password)
   end
 
 end

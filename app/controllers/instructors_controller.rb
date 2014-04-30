@@ -1,6 +1,7 @@
 class InstructorsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
 
   def index
     @active_instructors = Instructor.active.alphabetical.paginate(:page => params[:page]).per_page(10)
@@ -14,6 +15,7 @@ class InstructorsController < ApplicationController
 
   def new
     @instructor = Instructor.new
+    @user = @instructor.create_user(params[:user])
   end
 
   def edit
@@ -49,6 +51,10 @@ class InstructorsController < ApplicationController
     end
 
     def instructor_params
-      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active)
+      if current_user && current_user.role?(:admin)
+        params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, users_attributes: [ :username, :password, :password_confirmation, :instructor_id, :role, :active])  
+      else
+        params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, users_attributes: [ :username, :password, :password_confirmation, :instructor_id, :active])
+      end
     end
 end

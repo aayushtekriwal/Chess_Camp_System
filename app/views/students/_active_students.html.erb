@@ -2,10 +2,10 @@
 
 <table class="table">
   <tr>
-    <th>First name</th>
-    <th>Last name</th>
+    <th>Name</th>
     <th>Family</th>
     <th>Date of birth</th>
+    <th>Age</th>
     <th>Rating</th>
     <th></th>
     <th></th>
@@ -13,11 +13,11 @@
 
 <% @active_students.each do |student| %>
   <tr>
-    <td><%= link_to student.first_name, student_path(student) %></td>
-    <td><%= link_to student.last_name, student_path(student) %></td>
+    <td><%= link_to student.name, student_path(student) %></td>
     <td><%= student.family_id %></td>
     <td><%= student.date_of_birth.strftime("%b %d, %Y") %></td> 
-    <td><%= student.rating %></td>
+    <td><%= student.age %></td> 
+    <td><%= student.rating == 0 ? "Unrated" : student.rating %></td>
     <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
   </tr>
 <% end %>

@@ -2,6 +2,10 @@ class Instructor < ActiveRecord::Base
   include ChessCampHelpers
   mount_uploader :picture, PictureUploader
 
+  has_one :user, dependent: :destroy
+
+  accepts_nested_attributes_for :user, reject_if: lambda { |user| user[:username].blank? }, allow_destroy: true
+
   # relationships
   has_many :camp_instructors
   has_many :camps, through: :camp_instructors

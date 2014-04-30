@@ -1,32 +1,36 @@
 <h3>Camp Details</h3><br />
-<strong>Name:&nbsp;&nbsp;</strong> 
+<strong>Name :&nbsp;&nbsp;</strong> 
   <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
 
-<strong>Cost:&nbsp;&nbsp;</strong> 
-  <%= number_to_currency(@camp.cost) %><br /><br />
-
-<strong>Max Students:&nbsp;&nbsp;</strong> 
-  <%= @camp.max_students %><br /><br />
-
-<strong>Current Occupancy:&nbsp;&nbsp;</strong> 
-  <%= @camp.registrations.count%> / <%= @camp.max_students %><br /><br />
-
-<strong>Dates:&nbsp;&nbsp;</strong> 
-  <%= @camp.start_date.strftime("%b %d, %Y") %> 
+<strong>Dates :&nbsp;&nbsp;</strong> 
+  <%= @camp.start_date.strftime('%m/%d/%y') %> 
   <% if @camp.start_date != @camp.end_date %>
-    <%= "- #{@camp.end_date.strftime('%b %d, %Y')}" %>
+    <%= "- #{@camp.end_date.strftime('%m/%d/%y')}" %>
   <% end %>
   <br /><br />
 
-<strong>Time:&nbsp;&nbsp;</strong> 
+<strong>Time :&nbsp;&nbsp;</strong> 
   <%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %><br /><br />
 
-<strong>Location:&nbsp;&nbsp;</strong> 
+<strong>Location :&nbsp;&nbsp;</strong> 
   <%= link_to @camp.location.name, location_path(@camp.location) %><br /><br />
 
-<strong>Active?&nbsp;&nbsp;</strong>
-  <%= @camp.active ? "Yes" : "No" %><br /><br />
+<strong>Cost :&nbsp;&nbsp;</strong> 
+  <%= number_to_currency(@camp.cost) %><br /><br />
 
+<strong>Rating :&nbsp;&nbsp;</strong> 
+  <%= @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
+
+<strong>Max Students :&nbsp;&nbsp;</strong> 
+  <%= @camp.max_students %><br /><br />
+
+<strong>Registrations :&nbsp;</strong><%=@camp.registrations.count%><br /><br />
+
+<strong>List of Students in Camp :&nbsp;&nbsp;</strong> <br><br>
+  <ol><%= render :partial => "display_students" %></ol>
+
+<strong>Active ?&nbsp;&nbsp;</strong>
+  <%= @camp.active ? "Yes" : "No" %><br /><br />
 
 
 <%= link_to "Edit this camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;

@@ -1,5 +1,6 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
 
   def index
     @active_curriculums = Curriculum.active.alphabetical.paginate(:page => params[:page]).per_page(10)

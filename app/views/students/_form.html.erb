@@ -4,8 +4,9 @@
   <div class="form-inputs">
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :family_id %>
-    <%= f.input :date_of_birth %>
+    <%= f.select :family_id, options_for_select(Family.active.alphabetical.map{ |s| [s.family_name, s.id] }) , prompt: "Select family..."%>
+    <%= f.input :date_of_birth, label: "Date of Birth", as: :string, input_html: {:class => "avg datepicker"} %>        
+
     <%= f.input :rating %>
     <%= f.input :active %>
   </div>

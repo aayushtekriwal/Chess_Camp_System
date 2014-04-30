@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
+<h3>Student Details</h3><br />
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.proper_name %>
+</p>
 
 <p>
   <strong>First name:</strong>
@@ -17,13 +23,21 @@
 
 <p>
   <strong>Date of birth:</strong>
-  <%= @student.date_of_birth.strftime("%b %d, %Y") %>
+  <%= @student.date_of_birth.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @student.age %>
 </p>
 
 <p>
   <strong>Rating:</strong>
-  <%= @student.rating %>
+  <%= @student.rating == 0 ? "Unrated" : @student.rating %>
 </p>
+
+<strong>List of Camps:&nbsp;&nbsp;</strong> <br><br>
+  <%= render :partial => "display_students_camps" %><br />
 
 <p>
   <strong>Active:</strong>

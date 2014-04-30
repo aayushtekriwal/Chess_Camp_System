@@ -3,12 +3,11 @@
 <table class="table">
   <tr>
     <th>Name</th>
-    <th>Street 1</th>
-    <th>Street 2</th>
+    <th>Address</th>
     <th>City</th>
     <th>State</th>
     <th>Zip</th>
-    <th>Max capacity</th>
+    <th>Capacity</th>
     <th></th>
     <th></th>
   </tr>
@@ -16,8 +15,7 @@
 <% @active_locations.each do |location| %>
   <tr>
     <td><%= link_to location.name, location_path(location) %></td>
-    <td><%= location.street_1 %></td>
-    <td><%= location.street_2 %></td>
+    <td><%= location.street_1 %> <br> <%= location.street_2 %></td>
     <td><%= location.city %></td>
     <td><%= location.state %></td>
     <td><%= location.zip %></td>

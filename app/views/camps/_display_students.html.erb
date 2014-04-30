@@ -1,0 +1,3 @@
+<% @camp.students.each do |student| %>
+    <li>&nbsp&nbsp&nbsp<%= link_to student.name, student_path(student) %>  ( <%= student.rating %> )</li>
+<% end %>

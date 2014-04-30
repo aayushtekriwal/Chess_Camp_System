@@ -14,7 +14,7 @@
 <% camps.each do |camp| %>
   <tr>
     <td><%= link_to camp.name, camp_path(camp) %></td>
-    <td align="center"><%= camp.start_date.strftime("%b %d, %Y") %></td>
+    <td align="center"><%= camp.start_date.strftime('%m/%d/%y') %></td>
     <td align="center"><%= camp.time_slot == "am" ? "Morning" : "Afternoon" %></td>
     <td><%= link_to camp.location.name, location_path(camp.location) %></td>
     <td><%= camp.registrations.count%> / <%= camp.max_students %></td>
