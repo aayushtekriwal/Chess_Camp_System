@@ -7,8 +7,8 @@
         <%= f.input :location_id, collection: Location.active.alphabetical, prompt: "Select location..." %>
         <%= f.input :cost %>
         <%= f.input :max_students %>
-        <%= f.input :start_date, label: "start_date", as: :string, input_html: {:class => "avg datepicker"} %>        
-        <%= f.input :end_date, label: "end_date", as: :string, input_html: {:class => "avg datepicker"} %>        
+        <%= f.input :start_date, label: "start_date", as: :date %>        
+        <%= f.input :end_date, label: "end_date", as: :date %>        
         <%= f.input :time_slot, collection: [['Morning','am'],['Afternoon','pm']], prompt: "Select time..." %>
         <%= f.input :active %>
       </div>
