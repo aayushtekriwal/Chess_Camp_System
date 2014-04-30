@@ -1,26 +1,29 @@
 <h3>Active Families</h3>
+<% if @active_families.empty? %>
+  <p><em>There are no active families at this time.</em></p>
+<% else %>
+  <table class="table">
+    <tr>
+      <th>Family Name</th>
+      <th>Parent first name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table class="table">
-  <tr>
-    <th>Family Name</th>
-    <th>Parent first name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @active_families.each do |family| %>
-  <tr>
-    <td><%= link_to family.family_name, family_path(family) %></td>
-    <td><%= link_to family.parent_first_name, family_path(family) %></td>
-    <td><%= mail_to family.email, family.email, encode: "javascript" %></td>
-    <td><%= family.phone[0,3]+"-"+family.phone[3,3]+"-"+family.phone[6,4] %></td>
-    <td><%= link_to 'Edit', edit_family_path(family), class: "button tiny radius" %></td>
-  </tr>
+  <% @active_families.each do |family| %>
+    <tr>
+      <td><%= link_to family.family_name, family_path(family) %></td>
+      <td><%= link_to family.parent_first_name, family_path(family) %></td>
+      <td><%= mail_to family.email, family.email, encode: "javascript" %></td>
+      <td><%= family.phone[0,3]+"-"+family.phone[3,3]+"-"+family.phone[6,4] %></td>
+      <td><%= link_to 'Edit', edit_family_path(family), class: "button tiny radius" %></td>
+    </tr>
+  <% end %>
+  </table>
+  <!-- Add the pagination using will_paginate gem -->
+  <span class="paginate">
+  <%= will_paginate @active_families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  </span>
 <% end %>
-</table>
-<!-- Add the pagination using will_paginate gem -->
-<span class="paginate">
-<%= will_paginate @active_families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>

@@ -1,28 +1,31 @@
 <h3>Active Students</h3>
+<% if @active_students.empty? %>
+  <p><em>There are no active students at this time.</em></p>
+<% else %>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Family</th>
+      <th>Date of birth</th>
+      <th>Age</th>
+      <th>Rating</th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Family</th>
-    <th>Date of birth</th>
-    <th>Age</th>
-    <th>Rating</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @active_students.each do |student| %>
-  <tr>
-    <td><%= link_to student.name, student_path(student) %></td>
-    <td><%= student.family_id %></td>
-    <td><%= student.date_of_birth.strftime("%b %d, %Y") %></td> 
-    <td><%= student.age %></td> 
-    <td><%= student.rating == 0 ? "Unrated" : student.rating %></td>
-    <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
-  </tr>
+  <% @active_students.each do |student| %>
+    <tr>
+      <td><%= link_to student.name, student_path(student) %></td>
+      <td><%= student.family_id %></td>
+      <td><%= student.date_of_birth.strftime("%b %d, %Y") %></td> 
+      <td><%= student.age %></td> 
+      <td><%= student.rating == 0 ? "Unrated" : student.rating %></td>
+      <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
+    </tr>
+  <% end %>
+  </table>
+  <!-- Add the pagination using will_paginate gem -->
+  <span class="paginate">
+  <%= will_paginate @active_students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  </span>
 <% end %>
-</table>
-<!-- Add the pagination using will_paginate gem -->
-<span class="paginate">
-<%= will_paginate @active_students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>

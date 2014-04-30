@@ -1,30 +1,33 @@
 <h3>Active Locations</h3>
+<% if @active_locations.empty? %>
+  <p><em>There are no active locations at this time.</em></p>
+<% else %>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Capacity</th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Capacity</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @active_locations.each do |location| %>
-  <tr>
-    <td><%= link_to location.name, location_path(location) %></td>
-    <td><%= location.street_1 %> <br> <%= location.street_2 %></td>
-    <td><%= location.city %></td>
-    <td><%= location.state %></td>
-    <td><%= location.zip %></td>
-    <td><%= location.max_capacity %></td>
-    <td><%= link_to 'Edit', edit_location_path(location), class: "button tiny radius" %></td>
-  </tr>
+  <% @active_locations.each do |location| %>
+    <tr>
+      <td><%= link_to location.name, location_path(location) %></td>
+      <td><%= location.street_1 %> <br> <%= location.street_2 %></td>
+      <td><%= location.city %></td>
+      <td><%= location.state %></td>
+      <td><%= location.zip %></td>
+      <td><%= location.max_capacity %></td>
+      <td><%= link_to 'Edit', edit_location_path(location), class: "button tiny radius" %></td>
+    </tr>
+  <% end %>
+  </table>
+  <!-- Add the pagination using will_paginate gem -->
+  <span class="paginate">
+  <%= will_paginate @active_locations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  </span>
 <% end %>
-</table>
-<!-- Add the pagination using will_paginate gem -->
-<span class="paginate">
-<%= will_paginate @active_locations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>
