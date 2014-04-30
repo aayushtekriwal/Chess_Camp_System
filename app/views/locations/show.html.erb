@@ -13,31 +13,6 @@
 </p>
 
 <p>
-  <strong>Street 1:</strong>
-  <%= @location.street_1 %>
-</p>
-
-<p>
-  <strong>Street 2:</strong>
-  <%= @location.street_2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @location.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @location.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @location.zip %>
-</p>
-
-<p>
   <strong>Maximum Capacity:</strong>
   <%= @location.max_capacity %>
 </p>
@@ -47,8 +22,8 @@
   <%= @location.active ? "Yes" : "No" %>
 </p>
  
-<strong>Map:</strong>
-<%= image_tag @location.create_map_link %>
+<strong>Map:</strong> <br><br>
+<%= image_tag @location.create_map_link %> <br><br>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to "Edit this Location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to "Back", locations_path, class: "button tiny radius" %>&nbsp;&nbsp;
