@@ -10,7 +10,7 @@
     <div class="span5">
       <legend>User for this Instructor</legend>
         <div id="instructor_user">
-          <%= instructor_form.simple_fields_for :users do |user_form| %>
+          <%= instructor_form.simple_fields_for :user do |user_form| %>
           <%= render :partial => "users_fields", :locals => { :f => user_form } %>
         <% end %> 
       </div> 
