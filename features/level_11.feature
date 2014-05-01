@@ -15,6 +15,7 @@ Feature: Authorization
     And I fill in "instructor_user_attributes_password" with "secret" 
     And I fill in "instructor_user_attributes_password_confirmation" with "secret"
     And I press "Update Instructor"
+
     Then I should see "Patrick Dustmann was revised in the system"
     And I should see "pdust@cmu.edu"
 

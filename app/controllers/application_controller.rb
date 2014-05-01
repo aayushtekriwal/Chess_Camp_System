@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
 
   include DateFormatter
 
+  # just show a flash message instead of full CanCan exception
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "You are not authorized to take this action."
+    redirect_to home_path
+  end
+  
+  # handle missing pages the BSG way...
+  # rescue_from ActiveRecord::RecordNotFound do |exception|
+  #   render template: 'errors/not_found'
+  # end
+
   private
   # Handling authentication
   def current_user

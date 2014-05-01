@@ -47,7 +47,6 @@ Feature: Manage User Accounts
     And I press "Create Instructor"
     Then I should see "Ed Gruberman was added to the system"
     And I should see "Ed Gruberman"
-    Then show me the page
     And I should see "Role"
     And I should see "instructor"
     And I should see "412-268-3228"

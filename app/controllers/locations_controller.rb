@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_action :check_login
+  load_and_authorize_resource
 
   def index
     @locations = Location.all

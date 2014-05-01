@@ -6,9 +6,44 @@ class Ability
     user ||= User.new # guest user (not logged in)
     
     if user.role? :admin
+        # they get to do it all
         can :manage, :all
-    else
-        can :read, :all
+
+    elsif user.role? :instructor
+        # can see a list of all users
+        can :index, User
+        can :index, Instructor
+        can :index, Location
+
+      
+        # they can read their own user profile
+        can :show, User do |u|
+            u.id == user.id
+        end
+
+        # they can update their own profile
+        can :update, User do |u|  
+            u.id == user.id
+        end
+
+         # they can edit their own profile
+        can :edit, User do |u|  
+            u.id == user.id
+        end
+
+        # they can edit their own profile
+        can :show, Instructor do |u|  
+            u.id == user.instructor.id
+        end
+
+        can :update, Instructor do |u|  
+            u.id == user.instructor.id
+        end
+
+        # they can edit their own profile
+        can :edit, Instructor do |u|  
+            u.id == user.instructor.id
+        end
     end
 
 

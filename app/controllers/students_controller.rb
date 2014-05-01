@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :check_login
+  load_and_authorize_resource
 
   def index
     @students = Student.all
