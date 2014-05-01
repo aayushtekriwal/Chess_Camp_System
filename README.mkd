@@ -12,3 +12,14 @@ To set this up, clone this repository, run the `bundle install` command to ensur
 Many objects are created with some element of randomness so you will get slightly different results each time it is run.  However, instructors and users are fixed.  All users in the system have a password of 'secret'.  In terms of users there are two admins (Alex and Mark) and four instructor-level users (our four Head TAs).  The username for each is their first name in all lowercase.
 
 Instructions for what needs to be done in this phase of the project can be found in the phase 5 write-up found on the [67-272 course site](http://cmu-is-272.org/projects/5).
+
+
+
+-------------------------------------------------------------------
+
+Notes for TAs below
+
+-------------------------------------------------------------------
+
+- For the student form's date of birth input, I used the datepicker the same way it was used in Arbeit in order to pass tests, however, I wish to mention that it is bad style as it is not easy to go back a few years from the current date. I used it simply to pass the test. (Date can be entered manually, but it is not the optimal way to do it)
+
