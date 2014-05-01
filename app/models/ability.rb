@@ -14,6 +14,7 @@ class Ability
         can :index, User
         can :index, Instructor
         can :index, Location
+        can :index, Camp
 
       
         # they can read their own user profile
@@ -43,6 +44,22 @@ class Ability
         # they can edit their own profile
         can :edit, Instructor do |u|  
             u.id == user.instructor.id
+        end
+
+        can :show, Camp do |this_camp|
+            taught_camps = user.instructor.camps.map(&:id)
+            taught_camps.include? this_camp.id
+        end
+
+        can :show, Student do |this_student|
+            taught_students = []
+            user.instructor.camps.each do |someCamp|
+                student_list = someCamp.students.map(&:id)
+                student_list.each do |someStudentID|
+                    taught_students.push(someStudentID)
+                end
+            end
+            taught_students.include? this_student.id
         end
     end
 

@@ -9,6 +9,11 @@
   <%= mail_to @instructor.email, @instructor.email, encode: "javascript" %><br /><br />
 
 <% if !@instructor.user.nil? %>
+	<strong>Username :&nbsp;&nbsp;</strong> 
+  		<%= @instructor.user.username %><br /><br />
+<% end %>
+
+<% if !@instructor.user.nil? %>
 	<strong>Role :&nbsp;&nbsp;</strong> 
   		<%= @instructor.user.role %><br /><br />
 <% end %>
