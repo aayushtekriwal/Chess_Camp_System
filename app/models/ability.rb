@@ -15,7 +15,6 @@ class Ability
         can :index, Instructor
         can :index, Location
         can :index, Camp
-
       
         # they can read their own user profile
         can :show, User do |u|
@@ -32,63 +31,42 @@ class Ability
             u.id == user.id
         end
 
-        # they can edit their own profile
+        # they can see/ read their own instructor profile
         can :show, Instructor do |u|  
             u.id == user.instructor.id
         end
 
+        # they can update their own instructor profile
         can :update, Instructor do |u|  
             u.id == user.instructor.id
         end
 
-        # they can edit their own profile
+        # they can edit their own instructor profile
         can :edit, Instructor do |u|  
             u.id == user.instructor.id
         end
 
+        # they can see only their own camps
         can :show, Camp do |this_camp|
             taught_camps = user.instructor.camps.map(&:id)
             taught_camps.include? this_camp.id
         end
 
+        # they can see only those students who they teach (students in their camps)
         can :show, Student do |this_student|
-            taught_students = []
-            user.instructor.camps.each do |someCamp|
+            taught_students = [] # initializing an empty array
+            user.instructor.camps.each do |someCamp| # Iterates through each camp that the instructor teaches
                 student_list = someCamp.students.map(&:id)
-                student_list.each do |someStudentID|
-                    taught_students.push(someStudentID)
+                student_list.each do |someStudentID| # Iterates through each student in each camp
+                    taught_students.push(someStudentID) # Adds the student to the array
                 end
             end
-            taught_students.include? this_student.id
+            taught_students.include? this_student.id # Checks if the student is in the taught_students array in order to grant access, or deny it
         end
+
+    else
+        # guests can only read domains covered (plus home pages)
+        can :read, Camp
     end
-
-
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on.
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/bryanrite/cancancan/wiki/Defining-Abilities
   end
 end

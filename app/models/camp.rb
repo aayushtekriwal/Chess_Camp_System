@@ -1,12 +1,17 @@
 class Camp < ActiveRecord::Base
   include ChessCampHelpers
 
+  has_many :registrations
+
+  accepts_nested_attributes_for :registrations, reject_if: lambda { |registration| registration[:student_id].blank? }, allow_destroy: true
+
+
   # relationships
   belongs_to :curriculum
   has_many :camp_instructors
   has_many :instructors, through: :camp_instructors
   belongs_to :location
-  has_many :registrations
+  # has_many :registrations
   has_many :students, through: :registrations
 
   # validations

@@ -15,6 +15,7 @@ class CampsController < ApplicationController
 
   def new
     @camp = Camp.new
+    @camp.registrations.build
   end
 
   def edit
@@ -62,6 +63,6 @@ class CampsController < ApplicationController
     def camp_params
       convert_start_date
       convert_end_date
-      params.require(:camp).permit(:curriculum_id, :location_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :instructor_ids => [])
+      params.require(:camp).permit(:curriculum_id, :location_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :instructor_ids => [], registrations_attributes: [ :id, :camp_id, :student_id, :payment_status, :points_earned])
     end
 end

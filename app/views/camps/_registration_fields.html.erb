@@ -1,0 +1,10 @@
+<div class="fields">
+    <div class="min_attraction">
+    	<!-- x icon to remove -->
+      	<%= f.link_to_remove("x") %>
+      	<!-- fields -->
+    	<%= f.input :student_id, collection: Student.active.at_or_above_rating(@camp.curriculum.min_rating).below_rating(@camp.curriculum.max_rating).alphabetical, prompt: "Select student..."%>
+    	<%= f.input :payment_status %>
+    	<%= f.input :points_earned %>
+	</div>
+</div>

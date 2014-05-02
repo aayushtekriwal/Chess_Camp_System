@@ -1,3 +1,7 @@
-<% @camp.students.each do |student| %>
-    <li>&nbsp&nbsp&nbsp<%= link_to student.name, student_path(student) %>  ( <%= student.rating %> )</li>
+<% if @camp.students.count == 0 %>
+	<p> There are no registered students to display </p>
+<% else %>
+	<% @camp.students.each do |student| %>
+	    <li><%= link_to student.name, student_path(student) %>  ( <%= student.rating %> )</li>
+	<% end %>
 <% end %>

@@ -3,7 +3,9 @@
   	    <%= f.input :username %>
         <%= f.input :password %>
         <%= f.input :password_confirmation %>
-        <%= f.input :role, :collection => User::ROLES, :prompt => true %>
+        <% if @current_user.role == "admin" %>
+        	<%= f.input :role, :collection => User::ROLES, :prompt => true %>
+    	<% end %>
         <%= f.input :active %>
     </div>
 </div>
