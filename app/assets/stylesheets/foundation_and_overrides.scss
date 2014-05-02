@@ -1254,14 +1254,12 @@ a img {
 
  .min_attraction {
 	background-color: #d1ecfb;
-	padding: 20px 30px 20px 30px;
-	border: 1px solid blue;
+	padding-left: 20px;
+	border: 2px solid blue;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	margin-left: 15px;
-	border-radius: 15px;
-	select { width: 180px; }
-	input { width: 100px; }
+	border-radius: 5px;
  }
 
   /* Cutting back the spacing on simple_form... */
