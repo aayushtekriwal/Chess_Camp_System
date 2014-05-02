@@ -24,3 +24,5 @@ Notes for TAs below
 - For the student form's date of birth input, I used the datepicker the same way it was used in Arbeit in order to pass tests, however, I wish to mention that it is bad style as it is not easy to go back a few years from the current date. I used it simply to pass the test. (Date can be entered manually, but it is not the optimal way to do it)
 
 - Camp creation, and Updating Instructor registration (LEVELS 4 and 5). It works when done manually. However it fails in the cucumber tests for some odd reason. Had a few TA's (Alex Egan and Austin) see it already, but none of them were able to figure it out. I even followed the cucumber tests step by step in the rails server, and it worked.
+
+- The instructor can view the index pages for all camp related entities, except for families and students, as not all students and families are associated with an instructor, and it could raise privacy concerns. They can however view the camps details and student details for those that they are associated with.

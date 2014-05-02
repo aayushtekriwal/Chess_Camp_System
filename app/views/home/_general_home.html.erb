@@ -1,9 +1,8 @@
 <h2 align = "center" class = "subheader", align = "left"> Welcome to The Alex & Mark Chess Camp Company </h2>
 <hr size="100">
-<div class="small-7 columns">
+<div class="small-11 small-centered columns">
     <!-- MAIN CONTENT GOES HERE -->
     <%= render :partial => "upcoming_camps", locals: { status: "Upcoming", camps: @upcoming_camps } %>
     <p>&nbsp;</p>
     <br />
-    <%= link_to "Add a new camp", new_camp_path, class: "button tiny radius" %>
 </div>
