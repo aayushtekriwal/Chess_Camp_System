@@ -29,12 +29,12 @@
       <hr>
         <div id="camp_student">
           <%= f.simple_fields_for :registrations do |registration_form| %>
-          <%= render :partial => "registration_fields", :locals => { :f => registration_form } %>
-        <% end %> 
-        <p>
-          <br /><%= f.link_to_add("Add Registration", :registrations, :class => 'button tiny') %>
-        </p>
-      </div> 
+            <%= render :partial => "registration_fields", :locals => { :f => registration_form } %>
+          <% end %>
+          <p>
+            <br /><%= f.link_to_add("Add Registration", :registrations, :class => 'button tiny') %>
+          </p>
+      </div>
     </div>
   </div>
   <div class="form-actions">

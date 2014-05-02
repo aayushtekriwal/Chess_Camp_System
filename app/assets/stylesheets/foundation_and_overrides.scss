@@ -1276,6 +1276,18 @@ a img {
       width: 240px;
   }
 
+
+.project_item {
+  background-color: #d1ecfb;
+  width: 400px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid blue;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+
 select.date { width: 95px; }
 #camp_time_slot, #camp_max_students, #camp_cost, #camp_curriculum_id { width: 290px; }
 #instructor_bio { height: 7rem; }

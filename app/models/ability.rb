@@ -66,6 +66,7 @@ class Ability
 
     else
         # guests can only read domains covered (plus home pages)
+        can :index, Camp
         can :read, Camp
     end
   end

@@ -1,0 +1,25 @@
+<h3>Welcome back, <%= current_user.instructor.proper_name %></h3>
+
+<p>Below is your profile, and information on your camps and students:</p>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr valign="top">
+		<td>
+			<h3>My Camps &nbsp;&nbsp;<span class="add_link"></span></h3>
+			<% if current_user.instructor.camps.nil? || current_user.instructor.camps.empty? %>
+				<p>You have no camps at this time</p>
+			<% else %>
+				<table border="0" cellspacing="15" cellpadding="5">
+					<% current_user.instructor.camps.each do |camp| %>
+						<tr valign="top" class="project_item">
+							<td class="project_item"><%= link_to camp.name, camp_path(camp) %>----( <%= camp.start_date.strftime("%b %d, %Y") %> )</td>
+				      	</tr>
+
+	      			<% end %>
+      			</table>
+			<% end %>
+		</td>
+		<td width="50">&nbsp;</td>
+		
+	</tr>
+</table>
