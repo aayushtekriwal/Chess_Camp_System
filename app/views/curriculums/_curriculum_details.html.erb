@@ -12,6 +12,8 @@
   <%= @curriculum.active ? "Yes" : "No" %><br /><br />
 
 
-
-<%= link_to "Edit this curriculum", edit_curriculum_path(@curriculum), class: "button radius" %>&nbsp;&nbsp;
-
+<% if !current_user.nil? %>
+	<%= link_to "Edit this curriculum", edit_curriculum_path(@curriculum), class: "button radius" %>&nbsp;&nbsp;
+<% else %>
+  <%= link_to 'Back', home_path , class: "button tiny radius" %>
+<% end %>

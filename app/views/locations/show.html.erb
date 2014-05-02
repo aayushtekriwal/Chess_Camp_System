@@ -24,6 +24,10 @@
 <strong>Map:</strong> <br><br>
 <%= image_tag @location.create_map_link %> <br><br>
 
-<%= link_to "Display All Locations", locations_path, class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to "Edit Location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Delete Location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<% if !current_user.nil? %>
+	<%= link_to "Display All Locations", locations_path, class: "button tiny radius" %>&nbsp;&nbsp;
+	<%= link_to "Edit Location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
+	<%= link_to 'Delete Location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<% else %>
+  <%= link_to 'Back', home_path , class: "button tiny radius" %>
+<% end %>

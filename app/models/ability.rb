@@ -14,6 +14,7 @@ class Ability
         can :index, Instructor
         can :index, Location
         can :index, Camp
+        can :index, Curriculum
       
         # they can read their own user profile
         can :show, User do |u|
@@ -63,10 +64,12 @@ class Ability
             taught_students.include? this_student.id # Checks if the student is in the taught_students array in order to grant access, or deny it
         end
 
+        can :read, Location
+        can :read, Camp
     else
         # guests can only read domains covered (plus home pages)
-        can :index, Camp
-        can :read, Camp
+        can :read, Location
+        can :read, Instructor
     end
   end
 end

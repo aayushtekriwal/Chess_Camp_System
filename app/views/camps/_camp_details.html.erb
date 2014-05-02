@@ -26,12 +26,18 @@
 
 <strong>Registrations &nbsp;</strong>(<%=@camp.registrations.count%>)<br /><br />
 
-<strong>List of Students in Camp :&nbsp;&nbsp;</strong> <br><br>
-  <ol><%= render :partial => "display_students" %></ol>
+<% if !current_user.nil? %>
+  <strong>List of Students in Camp :&nbsp;&nbsp;</strong> <br><br>
+    <ol><%= render :partial => "display_students" %></ol>
+<% end %>
 
 <strong>Active ?&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />
 
-<%= link_to "Display All Camps", camps_path, class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to "Edit Camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Delete Camp', camp_path(@camp), data: { confirm: 'Are you sure you want to permanently remove this camp from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<% if !current_user.nil? %>
+  <%= link_to "Display All Camps", camps_path, class: "button tiny radius" %>&nbsp;&nbsp;
+  <%= link_to "Edit Camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;
+  <%= link_to 'Delete Camp', camp_path(@camp), data: { confirm: 'Are you sure you want to permanently remove this camp from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<% else %>
+  <%= link_to 'Back', home_path, class: "button tiny radius" %>
+<% end %>

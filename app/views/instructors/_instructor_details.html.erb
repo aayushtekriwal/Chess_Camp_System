@@ -24,5 +24,9 @@
 <strong>Biography :</strong><br><br />
   <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
 
-<%= link_to "Display All Instructors", instructors_path, class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to "Edit Instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;
+<% if !current_user.nil? %>
+	<%= link_to "Display All Instructors", instructors_path, class: "button tiny radius" %>&nbsp;&nbsp;
+	<%= link_to "Edit Instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;
+<% else %>
+  <%= link_to 'Back', home_path, class: "button tiny radius" %>
+<% end %>

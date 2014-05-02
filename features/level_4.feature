@@ -10,7 +10,6 @@ Feature: Manage camps
   # READ METHODS
   Scenario: View all camps (paginated)
     When I go to the camps page
-    # Then show me the page
     Then I should see "Camps"
     And I should see "Name"
     And I should see "Start"
@@ -82,7 +81,6 @@ Feature: Manage camps
     And I select "Morning" from "camp_time_slot"
     And I select "ACAC" from "camp_location_id"
     And I press "Create Camp"
-    Then show me the page
     Then I should see "was added to the system"
     And I should see "Camp Details"
     And I should see "Endgame Principles"
