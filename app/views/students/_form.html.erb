@@ -13,5 +13,7 @@
 
   <div class="form-actions">
     <%= f.button :submit %>
+    <%= link_to 'Display Student', @student , :class => 'button secondary radius'%>
+    <%= link_to 'Back to list of students', students_path, :class => 'button secondary radius' %>
   </div>
 <% end %>

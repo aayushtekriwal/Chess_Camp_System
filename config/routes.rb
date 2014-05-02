@@ -5,10 +5,8 @@ ChessCamp::Application.routes.draw do
   resources :camps
 
   # New routes added:
-  resources :camp_instructors # Remove towards the end of the project
   resources :families
   resources :locations
-  resources :registrations
   resources :students
   resources :users
   resources :sessions

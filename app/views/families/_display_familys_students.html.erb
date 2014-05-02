@@ -1,3 +1,7 @@
-<% @family.students.each do |student| %>
-    <li><%= link_to student.name, student_path(student) %>  ( <%= student.rating %> )</li><br>
+<% if @family.students.count == 0 %>
+	<p> There are no students to display </p>
+<% else %>
+	<% @family.students.each do |student| %>
+	    <li><%= link_to student.name, student_path(student) %>  ( <%= student.rating %> )</li><br>
+	<% end %>
 <% end %>

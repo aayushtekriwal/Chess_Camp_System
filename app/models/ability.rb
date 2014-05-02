@@ -11,7 +11,6 @@ class Ability
 
     elsif user.role? :instructor
         # can see a list of all users
-        can :index, User
         can :index, Instructor
         can :index, Location
         can :index, Camp

@@ -2,7 +2,7 @@
 
 <hr>
 
-<p>Below is some basic info, and information on your camps and students:</p>
+<p>Below is some basic profile info, and information on your camps and students:</p>
 
 <strong>Phone :&nbsp;&nbsp;</strong> 
   <%= current_user.instructor.phone %><br /><br />
@@ -18,7 +18,11 @@
   <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
 
 <%= link_to "Edit Profile", edit_instructor_path(current_user.instructor), class: "button tiny radius" %>&nbsp;&nbsp;
-<hr>
+
+<% if current_user.role == "admin" %>
+	<%= link_to "View and Edit Users", users_path, class: "button tiny radius" %>&nbsp;&nbsp;
+	<hr>
+<% end %>
 
 
 <table border="0" cellspacing="5" cellpadding="5">

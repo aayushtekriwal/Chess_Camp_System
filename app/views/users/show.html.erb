@@ -3,25 +3,23 @@
   <%= @user.username %>
 </p>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
 
 <p>
   <strong>Instructor:</strong>
-  <%= @user.instructor_id %>
+  <%= @user.instructor.proper_name %>
 </p>
 
 <p>
   <strong>Role:</strong>
-  <%= @user.role %>
+  <%= @user.role.capitalize %>
 </p>
 
 <p>
   <strong>Active:</strong>
-  <%= @user.active %>
+  <%= @user.active ? "Yes" : "No" %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+<%= link_to "Display All Users", users_path, class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to "Edit User", edit_user_path(@user), class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } , class: "button tiny radius"%>

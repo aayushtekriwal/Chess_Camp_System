@@ -43,8 +43,14 @@ class CampsController < ApplicationController
   end
 
   def destroy
-    @camp.destroy
-    redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
+    status = @camp.verify_that_there_are_no_registrations_for_camp
+    if !status
+      redirect_to :back, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} cannot be removed from the system. Has Registrations !"
+    else
+      @camp.destroy
+      redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
+    end
+
   end
 
   private

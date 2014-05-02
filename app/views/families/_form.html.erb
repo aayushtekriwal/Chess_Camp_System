@@ -10,6 +10,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit nil, class: 'button radius' %>
+    <%= link_to 'Display Family', @family , :class => 'button secondary radius'%>
+    <%= link_to 'Back to list of families', families_path, :class => 'button secondary radius' %>
   </div>
 <% end %>

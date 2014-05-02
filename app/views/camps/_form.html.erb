@@ -36,9 +36,13 @@
           </p>
       </div>
     </div>
+
+    <hr>
+
   </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'button radius' %>
+    <%= link_to 'Display Camp', @camp , :class => 'button secondary radius'%>
     <%= link_to 'Back to list of camps', camps_path, :class => 'button secondary radius' %>
   </div>
 <% end %>
