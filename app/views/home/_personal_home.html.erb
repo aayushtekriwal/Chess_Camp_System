@@ -1,6 +1,25 @@
 <h3>Welcome back, <%= current_user.instructor.proper_name %></h3>
 
-<p>Below is your profile, and information on your camps and students:</p>
+<hr>
+
+<p>Below is some basic info, and information on your camps and students:</p>
+
+<strong>Phone :&nbsp;&nbsp;</strong> 
+  <%= current_user.instructor.phone %><br /><br />
+
+<strong>Email :&nbsp;&nbsp;</strong> 
+  <%= mail_to current_user.instructor.email, current_user.instructor.email, encode: "javascript" %><br /><br />
+
+<% if !current_user.instructor.user.nil? %>
+	<strong>You have <%= current_user.instructor.user.role.upcase %> privileges ! </strong><br /><br />
+<% end %>
+
+<strong>Biography :</strong><br><br />
+  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
+
+<%= link_to "Edit Profile", edit_instructor_path(current_user.instructor), class: "button tiny radius" %>&nbsp;&nbsp;
+<hr>
+
 
 <table border="0" cellspacing="5" cellpadding="5">
 	<tr valign="top">
@@ -20,6 +39,26 @@
 			<% end %>
 		</td>
 		<td width="50">&nbsp;</td>
+		<td>
+			<h3>My Students &nbsp;&nbsp;<span class="add_link"></span></h3>
+			<span>Quick search (Mac) = Command + F -> Type Name</span><br>
+			<span>Quick search (Windows) = Control + F -> Type Name</span><br><br>
+			<% if current_user.instructor.camps.nil? || current_user.instructor.camps.empty? %>
+				<p>You have no students at this time</p>
+			<% else %>
+				<table border="0" cellspacing="8" cellpadding="5">
+	        		<% current_user.instructor.camps.each do |someCamp|  %>
+	                	<% student_list = someCamp.students %>
+	                	<% student_list.each do |someStudent| %>
+	                		<tr valign="top" class="project_item">
+								<td class="project_item"><%= link_to someStudent.proper_name, student_path(someStudent) %>
+								</td>
+					      	</tr>
+	                	<% end %>
+	            	<% end %>
+	            </table>
+			<% end %>
+		</td>
 		
 	</tr>
 </table>
