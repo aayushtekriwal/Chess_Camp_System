@@ -1,4 +1,6 @@
-<h3>Curriculum Details</h3><br />
+<h3>Curriculum Details</h3>
+<hr class="style-one" ><br />
+
 <strong>Name :&nbsp;&nbsp;</strong> 
   <%= @curriculum.name %><br /><br />
 
@@ -11,6 +13,7 @@
 <strong>Active ?&nbsp;&nbsp;</strong>
   <%= @curriculum.active ? "Yes" : "No" %><br /><br />
 
+<br><br><br><br>
 
 <% if !current_user.nil? %>
 	<%= link_to "Edit this curriculum", edit_curriculum_path(@curriculum), class: "button radius" %>&nbsp;&nbsp;

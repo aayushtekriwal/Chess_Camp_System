@@ -1,9 +1,9 @@
-<hr>
-
 <%= simple_nested_form_for @camp, :html => { :class => 'form-horizontal' } do |f| %>
     <div class="row">
       <div class="small-6 columns">
         <h3><%= controller.action_name.capitalize %> Camp</h3>
+        <hr class="style-one" ><br>
+
         <%= f.input :curriculum_id, collection: Curriculum.active.alphabetical, prompt: "Select curriculum..." %>
         <%= f.input :location_id, collection: Location.active.alphabetical, prompt: "Select location..." %>
         <%= f.input :cost %>
@@ -16,17 +16,19 @@
       <div class="small-1 columns">&nbsp;</div>
       <div class="small-5 columns">
         <% if controller.action_name=="edit" && @camp.active %>
-        <h3>Camp Instructor(s)</h3>
-        <%= f.input :instructor_ids, label: "", collection: Instructor.active.alphabetical, as: :check_boxes %>
-        <% end %>
+        <br><br><br><br><br><br><br>
+        <div class="panel clearfix">
+          <h3>Camp Instructor(s)</h3>
+          <%= f.input :instructor_ids, label: "", collection: Instructor.active.alphabetical, as: :check_boxes %>
+          <% end %>
+        </div>
       </div>
     </div>
     
-    <hr>
+    <hr class="style-one" ><br>
 
     <div class="span5">
       <h3>Registrations</h3>
-      <hr>
         <div id="camp_student">
           <%= f.simple_fields_for :registrations do |registration_form| %>
             <%= render :partial => "registration_fields", :locals => { :f => registration_form } %>
@@ -37,7 +39,7 @@
       </div>
     </div>
 
-    <hr>
+    <hr class="style-one" ><br>
 
   </div>
   <div class="form-actions">

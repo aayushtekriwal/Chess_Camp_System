@@ -16,7 +16,7 @@ class InstructorsController < ApplicationController
 
   def new
     @instructor = Instructor.new
-    @user = @instructor.create_user(params[:user])
+    @user = @instructor.build_user(params[:user])
   end
 
   def edit

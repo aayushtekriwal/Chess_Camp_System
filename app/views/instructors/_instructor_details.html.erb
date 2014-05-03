@@ -1,4 +1,5 @@
 <h3>Instructor Details</h3><br />
+<hr class="style-one" ><br>
 <strong>Name :&nbsp;&nbsp;</strong> 
   <%= @instructor.proper_name %><br /><br />
 
@@ -23,7 +24,7 @@
 
 <strong>Biography :</strong><br><br />
   <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
-
+<br><br>
 <% if !current_user.nil? %>
 	<%= link_to "Display All Instructors", instructors_path, class: "button tiny radius" %>&nbsp;&nbsp;
 	<%= link_to "Edit Instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;

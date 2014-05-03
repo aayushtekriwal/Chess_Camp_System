@@ -1,4 +1,5 @@
-<h3>Location Details</h3><br />
+<h3>Location Details</h3>
+<hr class="style-one" ><br>
 
 <p>
   <strong>Name:</strong>
@@ -23,6 +24,8 @@
  
 <strong>Map:</strong> <br><br>
 <%= image_tag @location.create_map_link %> <br><br>
+<hr class="style-one" ><br>
+
 
 <% if !current_user.nil? %>
 	<%= link_to "Display All Locations", locations_path, class: "button tiny radius" %>&nbsp;&nbsp;

@@ -2,13 +2,15 @@
     <div class="row">
       <div class="span7">
         <fieldset>
-          <legend><%= controller.action_name.capitalize %> Instructor</legend>
+          <h3><%= controller.action_name.capitalize %> Instructor</h3>
           <%= render :partial => "instructors_fields", :locals => { :f => instructor_form } %>
         </fieldset>
-      </div>
+      </div>      
+      <hr class="style-one" ><br>
+
 
     <div class="span5">
-      <legend>User for this Instructor</legend>
+      <h3>User for this Instructor</h3>
         <div id="instructor_user">
           <%= instructor_form.simple_fields_for :user do |user_form| %>
           <%= render :partial => "users_fields", :locals => { :f => user_form } %>
