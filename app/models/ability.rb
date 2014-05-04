@@ -66,6 +66,7 @@ class Ability
 
         can :read, Location
         can :read, Camp
+        can :read, Curriculum
     else
         # guests can only read domains covered (plus home pages)
         can :read, Location
