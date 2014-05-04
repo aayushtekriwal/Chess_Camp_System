@@ -4,11 +4,13 @@ module Contexts
     def create_users
       @mark_user = FactoryGirl.create(:user, instructor: @mark)
       @alex_user = FactoryGirl.create(:user, instructor: @alex, username: "tank")
+      @patrick_user2 = FactoryGirl.create(:user, instructor: @patrick, username: "patricka", role: "instructor")
     end
 
     def delete_users
       @mark_user.delete
       @alex_user.delete
+      @patrick_user2.delete
     end
 
     def create_more_users

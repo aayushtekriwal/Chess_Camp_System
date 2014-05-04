@@ -63,5 +63,10 @@ class UserTest < ActiveSupport::TestCase
       deny @mark_user.role?(:instructor)
     end
 
+    should "have working class method for authenication" do 
+      assert User.authenticate("patricka", "secret")
+      deny User.authenticate("fred@example.com", "password")
+    end
+
   end
 end

@@ -96,5 +96,11 @@ class RegistrationTest < ActiveSupport::TestCase
       assert_equal ["Regan, Kelsey", "Regan, Peter", "Regan, Peter", "Skirpan, Max", "Skirpan, Zach"], Registration.by_student.map{|r| r.student.name}
     end
 
+     should "Not allow a duplicate camp student registration" do
+      bad_registration = FactoryGirl.build(:registration, student: @max, camp: @camp1)
+      bad_registration2 = FactoryGirl.build(:registration, student: @max, camp: @camp1)
+      assert bad_registration
+      deny bad_registration2.valid?
+    end
   end
 end
