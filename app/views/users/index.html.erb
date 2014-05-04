@@ -19,7 +19,7 @@
         <td><%= user.instructor.proper_name %></td>
         <td><%= user.role.capitalize %></td>
         <td><%=  user.active ? "Yes" : "No" %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) , class: "button tiny round alert"%></td>
       </tr>
     <% end %>
   </tbody>
