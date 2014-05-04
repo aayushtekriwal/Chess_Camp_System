@@ -27,7 +27,10 @@
 
 <strong>Registrations &nbsp;</strong>(<%=@camp.registrations.count%>)<br /><br />
 
-<% if !current_user.nil? %>
+<strong>Camp Description : &nbsp;</strong><br><br>(<%=@camp.curriculum.description%>)<br /><br />
+
+
+<% if !current_user.nil? && ((@camp.instructors.include?(current_user.instructor)) or (current_user.role == "admin"))%>
   <strong>List of Students in Camp :&nbsp;&nbsp;</strong> <br><br>
     <ol><%= render :partial => "display_students" %></ol>
 <% end %>
