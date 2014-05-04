@@ -69,7 +69,7 @@
 
           <ul class="right">
             <li class="has-dropdown">
-            <%= link_to "Welcome, #{current_user.username.capitalize}" %>
+            <%= link_to "#{current_user.username.capitalize}" %>
             <ul class="dropdown">
               <li><%= link_to "Home", home_path %></li>
               <li><%= link_to "Profile", instructor_path(current_user.instructor) %></li>
