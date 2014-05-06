@@ -6,7 +6,9 @@
 Notes for TAs below
 
 -------------------------------------------------------------------
-- Camp creation, and Updating Instructor registration (LEVELS 4 and 5). It works when done manually. However it fails in the cucumber tests for some odd reason. Had a few TA's (Alex Egan and Austin) see it already, but none of them were able to figure it out. I even followed the cucumber tests step by step in the rails server, and it worked.
+- Camp creation, and Updating Instructor registration (LEVELS 4 and 5). It works when done manually. However it fails in the cucumber tests for some odd reason. Had a few TA's (Alex Egan and Austin) see it already, but none of them were able to figure it out. I even followed the cucumber tests step by step in the rails server, and it worked on rails server as expected. 
+
+If there is need for any further clarification, I have the screenshots clearly showing them working for the tests that fail.
 
 - For the student form's date of birth input, I used the datepicker the same way it was used in Arbeit in order to pass tests, however, I wish to mention that it is bad style as it is not easy to go back a few years from the current date. I used it simply to pass the test. (Date can be entered manually, but it is not the optimal way to do it)
 
