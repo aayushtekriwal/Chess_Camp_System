@@ -1,7 +1,23 @@
-<% if @camp.students.count == 0 %>
+<% if @camp.registrations.count == 0 %>
 	<p> There are no registered students to display </p>
 <% else %>
-	<% @camp.students.each do |student| %>
-	    <li><%= link_to student.name, student_path(student) %>  ( <%= student.rating %> )</li>
-	<% end %>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Rating</th>
+			<th>Points Earned</th>
+			<th>Payment Status</th>
+		</tr>
+		<% @camp.registrations.each do |registration| %>
+			<tr>
+	    		<td><%= link_to registration.student.name, student_path(registration.student) %></td>
+	    		<td><%= registration.student.rating %></td>
+	    		<td align = "center"><%= registration.points_earned %></td>
+	    		<td align = "center"><%= registration.payment_status %></td>
+	    		<td><%= link_to 'Edit', edit_registration_path(registration) ,class: "button tiny radius" %></td>
+	    		<td><%= link_to 'Remove', registration, method: :delete, data: { confirm: 'Are you sure?' }, class: "button tiny radius alert" %></td>
+
+	    	</tr>
+		<% end %>
+	</table>
 <% end %>

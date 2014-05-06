@@ -2,13 +2,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :camp_id %>
-    <%= f.input :student_id %>
+    <%= f.input :camp_id, collection: Camp.active.alphabetical, prompt: "Select curriculum..." %>
+    <%= f.input :student_id, collection: Student.active.alphabetical, prompt: "Select curriculum..." %>
     <%= f.input :payment_status %>
     <%= f.input :points_earned %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit nil, :class => 'button radius' %>&nbsp&nbsp
+    <%= link_to 'Display Camp', @registration.camp , :class => 'button secondary radius'%>
   </div>
 <% end %>

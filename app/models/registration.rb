@@ -13,7 +13,7 @@ class Registration < ActiveRecord::Base
   validates :payment_status, presence: true, inclusion: { in: %w[deposit full] }  
   validate :student_is_active_in_the_system, on: :create
   validate :camp_is_active_in_the_system, on: :create
-  validate :student_is_not_already_assigned_to_camp # Makes sure student is not already assigned to a camp before registration
+  validate :student_is_not_already_assigned_to_camp, on: :create # Makes sure student is not already assigned to a camp before registration
   validate :student_rating_appropriate_for_camp, on: :create
   validate :student_is_not_already_registered_to_another_camp_at_same_time, on: :create
   
@@ -49,7 +49,7 @@ class Registration < ActiveRecord::Base
 
   def student_is_not_already_assigned_to_camp
     unless Registration.where(camp_id: self.camp_id, student_id: self.student_id).to_a.empty?
-      errors.add(:base, "Student has already been assigned to this camp")
+      errors.add(:camp_id, "Student has already been assigned to this camp")
     end
   end
 end

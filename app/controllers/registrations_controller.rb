@@ -33,7 +33,7 @@ class RegistrationsController < ApplicationController
   def update
     respond_to do |format|
       if @registration.update(registration_params)
-        format.html { redirect_to @registration, notice: 'Registration was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Registration was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -44,10 +44,7 @@ class RegistrationsController < ApplicationController
 
   def destroy
     @registration.destroy
-    respond_to do |format|
-      format.html { redirect_to registrations_url }
-      format.json { head :no_content }
-    end
+    redirect_to :back, notice: "#{@registration.student.name} has been removed from the camp"
   end
 
   private

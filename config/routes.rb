@@ -10,6 +10,7 @@ ChessCamp::Application.routes.draw do
   resources :students
   resources :users
   resources :sessions
+  resources :registrations
 
 # Authentication routes
   get 'user/edit' => 'users#edit', as: :edit_current_user

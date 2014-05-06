@@ -7,18 +7,12 @@ class UsersController < ApplicationController
     @users = User.alphabetical.paginate(:page => params[:page]).per_page(5)
   end
 
-  # def show
-  #   @user_assignments = @user.assignments.active.by_project
-  #   @created_tasks = Task.for_creator(@user.id).by_name
-  #   @completed_tasks = Task.for_completer(@user.id).by_name
-  # end
-
   def new
     @user = User.new
   end
 
   def edit
-    @user = current_user
+    # @user = current_user
   end
 
   def create

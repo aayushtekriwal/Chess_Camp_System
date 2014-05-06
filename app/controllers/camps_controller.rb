@@ -32,7 +32,6 @@ class CampsController < ApplicationController
   end
 
   def update
-
     @camp.start_date = convert_to_datetime(params[:camp][:start_date])
     @camp.end_date = convert_to_datetime(params[:camp][:end_date])
 
@@ -51,7 +50,6 @@ class CampsController < ApplicationController
       @camp.destroy
       redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
     end
-
   end
 
   private

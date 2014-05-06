@@ -1,8 +1,37 @@
-<h3><%= status %> Camps</h3>
+<h2>About Us</h2>
+<hr style = "style-one">
+
+<div>
+  <p class="supertiny">&nbsp;</p>
+  <p align = "justify">
+    <%= image_tag 'BoysPlaying2.jpg' , width: "50%", class: "right", hspace: "20"%>
+    The Alex & Mark Chess Camp Company offers a wide range of scholastic chess camps and activities. <br><br>
+
+    It is one of the largest youth summer chess programs, community based, and family oriented. Our mission is to spread the love of the game as well as develop a child’s mind with advanced logistical gaming skills. Our programs embark the children in a life-changing journey all year long. The Alex & Mark Chess Camp Company offers a wide range of scholastic chess activities, such as chess camps, tournaments, after school programs, private lessons, and online lectures.<br><br>
+</div>
+
+<hr style = "style-one">
+<h2 class = "right">Why Choose Us ?</h2>
+<hr style = "style-one">
+
+
+<div>
+  <p align = "justify">
+    <%= image_tag "things_to_remember.jpg" , width: "60%", class: "left", hspace: "20"%>
+
+    We developed a comprehensive and concise chess program that is fundamental in educating and teaching our chess students. We are dedicated to improving academic excellence by encouraging and training our students to become problem solvers, critical thinkers, and admirable leaders. Our After-School Program is also open for children who come from other schools. We believe that allowing kids from other schools to join the program in one specific school will benefit all children that attend classes. We have several different school locations in the city where your child can join the chess program. Helping develop chess skills and enhancing creative minds are the goals The Alex & Mark School of Chess is determined to bring to young ambitious adults. Now this process can be made even easier with the our online virtual classes. We developed a selection of programs that will bring the game of chess right into your own home or anywhere in the world. For students who do better in a private environment, The Alex & Mark Chess Camp Company also offers individual lessons for a one-on-one experience with an instructor. The Alex & Mark Chess Camp Company offers a variety of experienced teachers that will appeal to a child’s specific needs.<br><br>
+
+    Started by Alex and Mark Heimman two high school students, the school of chess has grown exponentially over the years. <br><br>
+  </p>
+
+</p>
+<hr style = "style-one">
+
+<h2 align = "center"><%= status %> Camps</h2><br>
 <% if @upcoming_camps.empty? %>
   <p><em>There are no upcoming camps to display.</em></p>
 <% else %>
-  <table class="table">
+  <table class="table" align = "center">
     
     <tr>
       <th width="260">Name</th>

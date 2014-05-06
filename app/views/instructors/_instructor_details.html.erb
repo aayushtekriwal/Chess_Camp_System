@@ -1,4 +1,13 @@
 <h3>Instructor Details</h3><br />
+<hr class="style-one" >
+
+<strong>Profile Picture</strong><br><br>
+<% if @instructor.picture_url.nil? %>
+  <%= image_tag("/assets/emptyProfilejpg.jpg") %>  
+<% else %>
+  <%= image_tag @instructor.picture_url %>
+<% end %>
+
 <hr class="style-one" ><br>
 <strong>Name :&nbsp;&nbsp;</strong> 
   <%= @instructor.proper_name %><br /><br />
