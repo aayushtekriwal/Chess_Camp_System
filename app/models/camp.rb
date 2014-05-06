@@ -11,7 +11,6 @@ class Camp < ActiveRecord::Base
   has_many :camp_instructors
   has_many :instructors, through: :camp_instructors
   belongs_to :location
-  # has_many :registrations
   has_many :students, through: :registrations
 
   # validations
