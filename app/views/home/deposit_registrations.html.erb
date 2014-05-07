@@ -1,0 +1,19 @@
+<h3  align = "center">Student Registrations with Dues &nbsp;&nbsp;<span class="add_link"></span></h3>
+<% if @deposit_registrations.nil? %>
+	<p>There are no Student Registration dues !</p>
+<% else %>
+	<table border="0" width="100%" align = "center">
+		<% @deposit_registrations.each do |registration| %>
+			<tr valign="top" class="project_item">
+    			<td><%= link_to registration.student.name, student_path(registration.student) %></td>
+    			<td><%= link_to registration.camp.name, camp_path(registration.camp) %></td>
+    			<td><%= registration.camp.cost %></td>
+    			<td width = 15%><%= link_to 'Edit Registration', edit_registration_path(registration) ,class: "button tiny radius" %></td>
+	      	</tr>
+			<% end %>
+		</table>
+		<!-- Add the pagination using will_paginate gem -->
+		<span class="paginate">
+		<%= will_paginate @deposit_registrations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+		</span>
+<% end %>

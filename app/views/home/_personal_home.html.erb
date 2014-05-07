@@ -1,30 +1,51 @@
 <h3>Welcome back, <%= current_user.instructor.proper_name %></h3>
 
 <hr>
+<div>
+	<% if current_user.instructor.picture_url.nil? %>
+			<%= image_tag("/assets/emptyProfilejpg.jpg", class:"right") %>  
+	<% else %>
+			<%= image_tag current_user.instructor.picture_url, class:"right" %>
+	<% end %>
+	
+	<p>Below is some basic profile info, and information on your camps and students:</p>
 
-<p>Below is some basic profile info, and information on your camps and students:</p>
+	<strong>Phone :&nbsp;&nbsp;</strong> 
+	  <%= current_user.instructor.phone %><br /><br />
 
-<strong>Phone :&nbsp;&nbsp;</strong> 
-  <%= current_user.instructor.phone %><br /><br />
+	<strong>Email :&nbsp;&nbsp;</strong> 
+	  <%= mail_to current_user.instructor.email, current_user.instructor.email, encode: "javascript" %><br /><br />
 
-<strong>Email :&nbsp;&nbsp;</strong> 
-  <%= mail_to current_user.instructor.email, current_user.instructor.email, encode: "javascript" %><br /><br />
+	<% if !current_user.instructor.user.nil? %>
+		<strong>You have <%= current_user.instructor.user.role.upcase %> privileges ! </strong><br /><br />
+	<% end %>
 
-<% if !current_user.instructor.user.nil? %>
-	<strong>You have <%= current_user.instructor.user.role.upcase %> privileges ! </strong><br /><br />
-<% end %>
+	<strong>Biography :</strong><br><br />
+	  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
 
-<strong>Biography :</strong><br><br />
-  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
+	<%= link_to "Edit Profile", edit_instructor_path(current_user.instructor), class: "button tiny radius" %>&nbsp;&nbsp;
 
-<%= link_to "Edit Profile", edit_instructor_path(current_user.instructor), class: "button tiny radius" %>&nbsp;&nbsp;
+	<% if current_user.role == "admin" %>
+		<%= link_to "View and Edit Users", users_path, class: "button tiny radius" %>&nbsp;&nbsp;
+	<% end %>
+</div>
+
+<br>
 
 <% if current_user.role == "admin" %>
-	<%= link_to "View and Edit Users", users_path, class: "button tiny radius" %>&nbsp;&nbsp;
 	<hr>
+	<h3>Business Related</h3>
+	<div class = "panel">
+		<%= link_to "Student Registrations with Deposit", deposit_registrations_path, class: "button expand" %>&nbsp;&nbsp;
+		<%= link_to "Most highly demanded Curriculums", curriculums_path, class: "button expand" %>&nbsp;&nbsp;
+		<%= link_to "Instructors with no Camps", instructors_no_camps_path, class: "button expand" %>&nbsp;&nbsp;
+	</div>	
 <% end %>
-<br><br><br>
 
+
+
+
+<hr>
 <table border="0" cellspacing="5" cellpadding="5">
 	<tr valign="top">
 		<td>

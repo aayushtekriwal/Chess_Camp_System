@@ -1,0 +1,29 @@
+<h3>Instructors with no camps</h3>
+<hr class="style-one" ><br>
+<% if @instructors_no_camps.empty? %>
+  <p><em>There are no instructors who do not have camps at this time.</em></p>
+<% else %>
+  <table class="table">
+    <thead>  
+      <tr>
+        <th width="200">Name</th>
+        <th width="200">Phone</th>
+        <th width="100">Camps</th>
+        <th></th>
+      </tr>
+    </thead>
+
+  <% @instructors_no_camps.each do |instructor| %>
+    <tr>
+      <td><%= link_to instructor.name, instructor_path(instructor) %></td>
+      <td align="center"><%= number_to_phone instructor.phone %></td>
+      <td align="center"><%= instructor.camps.size %></td>
+      <td><%= link_to 'Edit', edit_instructor_path(instructor), class: "button tiny round alert" %></td>
+    </tr>
+  <% end %>
+  </table>
+  <!-- Add the pagination using will_paginate gem -->
+  <span class="paginate">
+  <%= will_paginate @instructors_no_camps, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  </span>
+<% end %>
